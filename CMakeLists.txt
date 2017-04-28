@@ -36,3 +36,7 @@ link_libraries(m)
 set(SOURCE_FILES toy.cpp instance.h toy.h milp.h draw.h algorithms.h)
 add_executable(toy ${SOURCE_FILES})
 
+project(ZTE_small)
+
+set(SOURCE_FILES small_instance.cpp instance.h small_instance.h milp.h draw.h algorithms.h)
+add_executable(small_instance ${SOURCE_FILES})

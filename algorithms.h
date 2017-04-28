@@ -29,8 +29,9 @@ bool arcs_to_path(ListGraph &g, Node s, Node t,
                   ArcFlag &a_flag, NodeFlag &u_flag, ListPath<ListGraph> &p) {
     SubDigraph<ListGraph, NodeFlag, ArcFlag> sub_graph(g, u_flag, a_flag);
     bool has_st = true;
+    Edge e_ad;
     if (findEdge(g, t, s) == INVALID) {
-        g.addEdge(t, s);
+        e_ad = g.addEdge(t, s);
         has_st = false;
     }
     sub_graph.enable(findArc(g, t, s));
@@ -47,9 +48,7 @@ bool arcs_to_path(ListGraph &g, Node s, Node t,
         p.eraseBack();
 
     }
-    if (!has_st) {
-        g.erase(findEdge(g, s, t));
-    }
+    sub_graph.disable(findArc(g, t, s));
     return out_flag;
 }
 

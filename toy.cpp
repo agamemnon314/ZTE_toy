@@ -50,6 +50,9 @@ int main() {
     ArcFlag a_flag(g);
     NodeFlag u_flag(g);
     int milp_flag;
+    cout << "///////////////////////////////"
+         << "///////////////////////////////" << endl;
+    cout << "求解原问题" << endl;
     milp_flag = x_y_steiner(toy, a_flag, u_flag);
     if (milp_flag >= 1) {
         cout << "找到最优解！" << endl;
@@ -59,14 +62,16 @@ int main() {
         p.clear();
         read_solution(toy, p, file_name);
         calculate_solution_information(toy, sol);
-        display_solution_information(toy,sol);
+        display_solution_information(toy, sol);
         draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                       file_name);
     }
 
     if (milp_flag == -1) {
         cout << "当前问题无可行解！" << endl;
-        cout << "松弛必经点约束" << endl;
+        cout << "///////////////////////////////"
+             << "///////////////////////////////" << endl;
+        cout << "最小化必经点违反次数" << endl;
         toy.targetNodePunishment = 10;
         toy.targetEdgePunishment = -1;
         toy.forbiddenEdgePunishment = -1;
@@ -77,18 +82,19 @@ int main() {
         }
         if (milp_flag >= 1) {
             cout << "找到最优解！" << endl;
-            cout << "最优值: " << milp_flag << endl;
             arcs_to_path(g, toy.s, toy.t, a_flag, u_flag, p);
 
             write_solution(toy, p, file_name + "_1");
             p.clear();
             read_solution(toy, p, file_name + "_1");
             calculate_solution_information(toy, sol);
-            display_solution_information(toy,sol);
+            display_solution_information(toy, sol);
             draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                           file_name + "_1");
         }
-        cout << "松弛必经边约束" << endl;
+        cout << "///////////////////////////////"
+             << "///////////////////////////////" << endl;
+        cout << "最小化必经边违反次数" << endl;
         toy.targetNodePunishment = -1;
         toy.targetEdgePunishment = 10;
         toy.forbiddenEdgePunishment = -1;
@@ -99,18 +105,19 @@ int main() {
         }
         if (milp_flag >= 1) {
             cout << "找到最优解！" << endl;
-            cout << "最优值: " << milp_flag << endl;
             arcs_to_path(g, toy.s, toy.t, a_flag, u_flag, p);
 
             write_solution(toy, p, file_name + "_2");
             p.clear();
             read_solution(toy, p, file_name + "_2");
             calculate_solution_information(toy, sol);
-            display_solution_information(toy,sol);
+            display_solution_information(toy, sol);
             draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                           file_name + "_2");
         }
-        cout << "松弛禁止边约束" << endl;
+        cout << "///////////////////////////////"
+             << "///////////////////////////////" << endl;
+        cout << "最小化禁止边违反次数" << endl;
         toy.targetNodePunishment = -1;
         toy.targetEdgePunishment = -1;
         toy.forbiddenEdgePunishment = 10;
@@ -121,18 +128,19 @@ int main() {
         }
         if (milp_flag >= 1) {
             cout << "找到最优解！" << endl;
-            cout << "最优值: " << milp_flag << endl;
             arcs_to_path(g, toy.s, toy.t, a_flag, u_flag, p);
 
             write_solution(toy, p, file_name + "_3");
             p.clear();
             read_solution(toy, p, file_name + "_3");
             calculate_solution_information(toy, sol);
-            display_solution_information(toy,sol);
+            display_solution_information(toy, sol);
             draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                           file_name + "_3");
         }
-        cout << "松弛路长约束" << endl;
+        cout << "///////////////////////////////"
+             << "///////////////////////////////" << endl;
+        cout << "最小化经过节点个数" << endl;
         toy.targetNodePunishment = -1;
         toy.targetEdgePunishment = -1;
         toy.forbiddenEdgePunishment = -1;
@@ -143,14 +151,13 @@ int main() {
         }
         if (milp_flag >= 1) {
             cout << "找到最优解！" << endl;
-            cout << "最优值: " << milp_flag << endl;
             arcs_to_path(g, toy.s, toy.t, a_flag, u_flag, p);
 
             write_solution(toy, p, file_name + "_4");
             p.clear();
             read_solution(toy, p, file_name + "_4");
             calculate_solution_information(toy, sol);
-            display_solution_information(toy,sol);
+            display_solution_information(toy, sol);
             draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                           file_name + "_4");
         }

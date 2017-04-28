@@ -199,7 +199,7 @@ void calculate_solution_information(Instance &inst, Solution &sol) {
     EdgeFlag e_flag(g, false);
     NodeFlag u_flag(g, false);
     for (ListPath<ListGraph>::ArcIt a(p); a != INVALID; ++a) {
-        sol.pathLength += edge_cost[findArc(g, g.source(a), g.target(a))];
+        sol.pathLength += edge_cost[findEdge(g, g.source(a), g.target(a))];
         sol.pathNodeNumber += 1;
         e_flag[findEdge(g, g.source(a), g.target(a))] = true;
         u_flag[g.source(a)] = true;
@@ -226,13 +226,11 @@ void calculate_solution_information(Instance &inst, Solution &sol) {
 void display_solution_information(Instance &inst, Solution &sol) {
     ListGraph &g = inst.G;
     ListPath<ListGraph> &p = sol.P;
-    cout << "///////////////////////////////"
-         << "///////////////////////////////" << endl;
     cout << "路径序列: " << endl;
     for (ListPath<ListGraph>::ArcIt a(p); a != INVALID; ++a) {
         cout << g.id(g.source(a)) << "--";
     }
-    cout << g.id(g.source(p.back())) << endl;
+    cout << g.id(g.target(p.back())) << endl;
     cout << "路长: ";
     cout << sol.pathLength << endl;
     cout << "经过点数: ";

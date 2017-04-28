@@ -256,6 +256,9 @@ void draw_solution(Instance &inst,
         if (node_type[u] >= 2)
             rgba[u] = LightYellow;
         size[u] = node_size;
+        if (!flag[u]) {
+            size[u] /= 2;
+        }
     }
 
     EdgeFlag e_flag(g);

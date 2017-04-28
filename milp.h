@@ -527,21 +527,36 @@ int x_y_steiner(const Instance &inst, ArcFlag &a_flag, NodeFlag &u_flag) {
 
 
         ///////////////////////////////////////////////////////
-        cplex.setOut(env.getNullStream());
+//        cplex.setOut(env.getNullStream());
+        cplex.setParam(IloCplex::Param::TimeLimit,1000);
         cplex.solve();
+        cplex.out() << cplex.getStatus() << endl;
         if (cplex.getStatus() == IloAlgorithm::Optimal) {
             out_flag = (int) cplex.getObjValue();
             cplex.out() << "Optimal value: " << cplex.getObjValue() << endl;
 
             for (ArcIt a(g); a != INVALID; ++a) {
                 if (cplex.getValue(x[a]) >= 0.9) {
-
                     a_flag[a] = 1;
-//                    cout << g.id(g.source(a)) << "--" << g.id(g.target(a))
-//                         << "  edege cost : " << edge_cost[a]
-//                            << "  edege id : " << g.id(a)
-//                            << "  edege flag : " << edge_type[a]
-//                         << endl;
+                } else {
+                    a_flag[a] = 0;
+                }
+            }
+            for (NodeIt u(g); u != INVALID; ++u) {
+                if (cplex.getValue(y[u]) >= 0.9) {
+                    u_flag[u] = 1;
+                } else {
+                    u_flag[u] = 0;
+                }
+            }
+        }
+        if(cplex.getStatus()==IloAlgorithm::Feasible){
+            out_flag = (int) cplex.getObjValue();
+            cplex.out() << "Feasible solution value: " << cplex.getObjValue() << endl;
+
+            for (ArcIt a(g); a != INVALID; ++a) {
+                if (cplex.getValue(x[a]) >= 0.9) {
+                    a_flag[a] = 1;
                 } else {
                     a_flag[a] = 0;
                 }
