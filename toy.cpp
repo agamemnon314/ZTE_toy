@@ -59,6 +59,7 @@ int main() {
         p.clear();
         read_solution(toy, p, file_name);
         calculate_solution_information(toy, sol);
+        display_solution_information(toy,sol);
         draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                       file_name);
     }
@@ -82,9 +83,8 @@ int main() {
             write_solution(toy, p, file_name + "_1");
             p.clear();
             read_solution(toy, p, file_name + "_1");
-            read_solution(toy, p, file_name);
             calculate_solution_information(toy, sol);
-            cout << g.id(g.target(p.back())) << endl;
+            display_solution_information(toy,sol);
             draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                           file_name + "_1");
         }
@@ -106,6 +106,7 @@ int main() {
             p.clear();
             read_solution(toy, p, file_name + "_2");
             calculate_solution_information(toy, sol);
+            display_solution_information(toy,sol);
             draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                           file_name + "_2");
         }
@@ -126,8 +127,8 @@ int main() {
             write_solution(toy, p, file_name + "_3");
             p.clear();
             read_solution(toy, p, file_name + "_3");
-            read_solution(toy, p, file_name);
             calculate_solution_information(toy, sol);
+            display_solution_information(toy,sol);
             draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                           file_name + "_3");
         }
@@ -148,8 +149,8 @@ int main() {
             write_solution(toy, p, file_name + "_4");
             p.clear();
             read_solution(toy, p, file_name + "_4");
-            read_solution(toy, p, file_name);
             calculate_solution_information(toy, sol);
+            display_solution_information(toy,sol);
             draw_solution(toy, a_flag, u_flag, png_width, png_height, node_size,
                           file_name + "_4");
         }

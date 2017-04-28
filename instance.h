@@ -232,17 +232,18 @@ void display_solution_information(Instance &inst, Solution &sol) {
     for (ListPath<ListGraph>::ArcIt a(p); a != INVALID; ++a) {
         cout << g.id(g.source(a)) << "--";
     }
-    cout << "路长" << endl;
+    cout << g.id(g.source(p.back())) << endl;
+    cout << "路长: ";
     cout << sol.pathLength << endl;
-    cout << "经过点数" << endl;
+    cout << "经过点数: ";
     cout << sol.pathNodeNumber << endl;
-    cout << "超出点数（未超出为0）" << endl;
+    cout << "超出点数（未超出为0）: ";
     cout << sol.violatedPathNodeNumber << endl;
-    cout << "未经过目标点个数" << endl;
+    cout << "未经过目标点个数: ";
     cout << sol.violatedTargetNodeNumber << endl;
-    cout << "未经过目标边条数" << endl;
+    cout << "未经过目标边条数: ";
     cout << sol.violatedTargetEdgeNumber << endl;
-    cout << "经过禁止边条数" << endl;
+    cout << "经过禁止边条数: ";
     cout << sol.violatedForbiddenEdgeNumber << endl;
     cout << "///////////////////////////////"
          << "///////////////////////////////" << endl;
