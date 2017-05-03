@@ -20,7 +20,7 @@ typedef ListGraph::Edge Edge;
 typedef ListGraph::EdgeIt EdgeIt;
 typedef ListGraph::Arc Arc;
 typedef ListGraph::ArcIt ArcIt;
-typedef ListGraph::EdgeMap<int> EdgeCost;
+typedef ListGraph::EdgeMap<double> EdgeCost;
 typedef ListGraph::EdgeMap<int> EdgeType;
 typedef ListGraph::NodeMap<int> NodeType;
 typedef dim2::Point<double> Point;
@@ -186,7 +186,7 @@ void write_solution(Instance &inst, ListPath<ListGraph> &p,
 
 void calculate_solution_information(Instance &inst, Solution &sol) {
     ListGraph &g = inst.G;
-    ListGraph::EdgeMap<int> &edge_cost = inst.edgeCost;
+    ListGraph::EdgeMap<double> &edge_cost = inst.edgeCost;
     ListGraph::EdgeMap<int> &edge_type = inst.edgeType;
     ListGraph::NodeMap<int> &node_type = inst.nodeType;
     ListPath<ListGraph> &p = sol.P;

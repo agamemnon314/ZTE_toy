@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "instance.h"
 
 using namespace lemon;
 using namespace std;
@@ -24,6 +25,9 @@ typedef ListGraph::ArcIt ArcIt;
 typedef ListGraph::ArcMap<bool> ArcFlag;
 typedef ListGraph::NodeMap<bool> NodeFlag;
 
+bool check_feasibility(Instance &inst){
+
+}
 
 bool arcs_to_path(ListGraph &g, Node s, Node t,
                   ArcFlag &a_flag, NodeFlag &u_flag, ListPath<ListGraph> &p) {
@@ -51,6 +55,8 @@ bool arcs_to_path(ListGraph &g, Node s, Node t,
     sub_graph.disable(findArc(g, t, s));
     return out_flag;
 }
+
+
 
 
 #endif //ZTE_TOY_ALGORITHMS_H

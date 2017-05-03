@@ -40,3 +40,8 @@ project(ZTE_small)
 
 set(SOURCE_FILES small_instance.cpp instance.h small_instance.h milp.h draw.h algorithms.h)
 add_executable(small_instance ${SOURCE_FILES})
+
+project(ZTE_large)
+
+set(SOURCE_FILES large_instance.cpp instance.h milp.h draw.h algorithms.h heuristic.h ItemPath.cpp ItemPath.h)
+add_executable(large_instance ${SOURCE_FILES})

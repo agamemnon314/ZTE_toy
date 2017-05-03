@@ -149,7 +149,7 @@ void draw_instance(Instance &inst,
                    const string figure_name) {
 
     ListGraph &g = inst.G;
-    ListGraph::EdgeMap<int> &edge_cost = inst.edgeCost;
+    ListGraph::EdgeMap<double> &edge_cost = inst.edgeCost;
     ListGraph::EdgeMap<int> &edge_type = inst.edgeType;
     ListGraph::NodeMap<int> &node_type = inst.nodeType;
     ListGraph::NodeMap<Point> &pos = inst.nodePos;
@@ -188,7 +188,9 @@ void draw_instance(Instance &inst,
 
     for (EdgeIt e(g); e != INVALID; ++e) {
         e_flag[e] = 1;
-        e_label[e] = to_string(edge_cost[e]);
+        string l = to_string(edge_cost[e]);
+
+        e_label[e] = l.substr(0, l.find(".") + 2);
         e_font_color[e] = Black;
         if (edge_type[e] == 0) {
             e_rgba[e] = Blue;
@@ -225,7 +227,7 @@ void draw_solution(Instance &inst,
                    const string figure_name) {
 
     ListGraph &g = inst.G;
-    ListGraph::EdgeMap<int> &edge_cost = inst.edgeCost;
+    ListGraph::EdgeMap<double> &edge_cost = inst.edgeCost;
     ListGraph::EdgeMap<int> &edge_type = inst.edgeType;
     ListGraph::NodeMap<int> &node_type = inst.nodeType;
     ListGraph::NodeMap<Point> &pos = inst.nodePos;

@@ -111,7 +111,7 @@ ILOLAZYCONSTRAINTCALLBACK6(SubtourEliminationLazyCallback, const ListGraph &, g,
 
 int x_y_basic(const Instance &inst, ArcFlag &a_flag, NodeFlag &u_flag) {
     ListGraph &g = inst.G;
-    ListGraph::EdgeMap<int> &edge_cost = inst.edgeCost;
+    ListGraph::EdgeMap<double> &edge_cost = inst.edgeCost;
     ListGraph::EdgeMap<int> &edge_type = inst.edgeType;
     ListGraph::NodeMap<int> &node_type = inst.nodeType;
     const int path_node_limit = inst.pathNodeLimit;
@@ -296,7 +296,7 @@ int x_y_basic(const Instance &inst, ArcFlag &a_flag, NodeFlag &u_flag) {
 
 int x_y_steiner(const Instance &inst, ArcFlag &a_flag, NodeFlag &u_flag) {
     ListGraph &g = inst.G;
-    ListGraph::EdgeMap<int> &edge_cost = inst.edgeCost;
+    ListGraph::EdgeMap<double> &edge_cost = inst.edgeCost;
     ListGraph::EdgeMap<int> &edge_type = inst.edgeType;
     ListGraph::NodeMap<int> &node_type = inst.nodeType;
     const int path_node_limit = inst.pathNodeLimit;

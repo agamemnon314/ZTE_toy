@@ -37,7 +37,7 @@ int main() {
     ListPath<ListGraph> p;
     Solution sol{p, 0, 0, 0, 0, 0, 0};
 
-    string file_name = "./instances/100/1000_225_145_15_5";
+    string file_name = "./instances/100/100_5_5_5_5";
     read_instance(inst, file_name);
     int png_width = 1000;
     int png_height = 800;
@@ -46,14 +46,14 @@ int main() {
     ArcFlag a_flag(g, false);
     NodeFlag u_flag(g, false);
     int milp_flag=1;
-//    milp_flag = x_y_steiner(inst, a_flag, u_flag);
+    milp_flag = x_y_steiner(inst, a_flag, u_flag);
     if (milp_flag >= 1) {
-//        arcs_to_path(g, inst.s, inst.t, a_flag, u_flag, p);
-//        cout<<g.id(inst.s)<<endl;
-//        cout<<g.id(inst.t)<<endl;
-//        cout << "路径序列: " << endl;
-//
-//        write_solution(inst, p, file_name);
+        arcs_to_path(g, inst.s, inst.t, a_flag, u_flag, p);
+        cout<<g.id(inst.s)<<endl;
+        cout<<g.id(inst.t)<<endl;
+        cout << "路径序列: " << endl;
+
+        write_solution(inst, p, file_name);
         p.clear();
         read_solution(inst, p, file_name);
         calculate_solution_information(inst, sol);
